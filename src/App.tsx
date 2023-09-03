@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import './App.scss';
+import { Paper } from '@mui/material';
+import { Theme, ThemeProvider, createTheme } from "@mui/material/styles"
+import Header from './Components/Header/Header';
+import StartingPage from './Components/StartingPage/StartingPage';
+import { useDarkMode } from './Hooks/useDarkMode';
+import { useLanguage } from './Hooks/useLanguage';
 
-function App() {
+const App: React.FC = () => {
+  const [darkMode, changeDarkMode] = useDarkMode()
+  const [language, setLanguage] = useLanguage()
+  let darkTheme: Theme = createTheme({
+    palette: {
+      mode: darkMode === 'dark' ? 'dark' : 'light'
+    }
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <Paper style={{ height: '100vh', borderRadius: '0' }}>
+        <div className="App">
+            <Header darkMode={darkMode === 'dark'} changeDarkMode={changeDarkMode} language={language} setLanguage={setLanguage}/>
+            <div className='App-Wrapper'>
+              <StartingPage />
+            </div>
+        </div>
+      </Paper>
+    </ThemeProvider>
   );
 }
 
