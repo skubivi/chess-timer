@@ -1,8 +1,14 @@
 .App {
+  min-height: 780px;
   height: 100%;
   .App-Wrapper {
     margin-left: 15%;
     width: 70%;
-    height: 90%;
+    height: 90vh;
+    min-height: 700px;
+    @media (max-width: 570px) {
+      margin-left: 0;
+      width: 100%;
+    }
   }
 }

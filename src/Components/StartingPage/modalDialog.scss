@@ -1,0 +1,14 @@
+.Dialog {
+    .Dialog-Title {
+        display: flex;
+        justify-content: center;
+        .Dialog-List {
+            display: flex;
+            flex-direction: column;
+            .Dialog-List-ListItem {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

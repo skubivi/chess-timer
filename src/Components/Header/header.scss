@@ -2,19 +2,28 @@
     background-color: rgba($color: #000000, $alpha: 0.15);
     padding: 0 20px 0 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     height: 10%;
-    .Header-FormControl {
-        height: 100%;
+    min-height: 78px;
+    .Header-Wrapper {
         display: flex;
-        align-items: center;
-        width: 150px;
-        margin-right: 20px;
-    }
-    .Header-FormGroup {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        margin-right: 15%;
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-between;
+        @media (max-width: 570px) {
+            width: 100%;
+        }
+        .Header-Wrapper-FormControl {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            width: 150px;
+            margin-right: 20px;
+        }
+        .Header-Wrapper-FormGroup {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
     }
 }

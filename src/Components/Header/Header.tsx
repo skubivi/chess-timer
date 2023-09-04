@@ -21,40 +21,42 @@ const Header: React.FC<HeaderProps> = ({darkMode, changeDarkMode, language, setL
 
     return (
         <div className='Header'>
-            <div className="Header-FormControl">
-                <FormControl fullWidth={true}>
-                    <InputLabel id="select-language-label">{labelLanguage}</InputLabel>
-                    <Select
-                        labelId='select-language-label'
-                        value={language}
-                        label={labelLanguage}
-                        onChange={handleChange}
-                    >
-                        <MenuItem value='ru'>Русский</MenuItem>
-                        <MenuItem value='en'>English</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-            <div className='Header-FormGroup'>
-                <FormGroup>
-                    <FormControlLabel 
-                        label={labelTheme}
-                        labelPlacement='start'
-                        control={
-                            <Switch 
-                                checked={darkMode} 
-                                onChange={changeDarkMode}
-                                checkedIcon={
-                                    <NightsStayIcon
-                                        sx={{
-                                            transform: 'translateX(6px) translateY(-3px)'
-                                        }}
-                                    />
-                                }
-                            />
-                        }
-                    />
-                </FormGroup>
+            <div className='Header-Wrapper'>
+                <div className="Header-Wrapper-FormControl">
+                    <FormControl fullWidth={true}>
+                        <InputLabel id="select-language-label">{labelLanguage}</InputLabel>
+                        <Select
+                            labelId='select-language-label'
+                            value={language}
+                            label={labelLanguage}
+                            onChange={handleChange}
+                        >
+                            <MenuItem value='ru'>Русский</MenuItem>
+                            <MenuItem value='en'>English</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div className='Header-Wrapper-FormGroup'>
+                    <FormGroup>
+                        <FormControlLabel 
+                            label={labelTheme}
+                            labelPlacement='start'
+                            control={
+                                <Switch 
+                                    checked={darkMode} 
+                                    onChange={changeDarkMode}
+                                    checkedIcon={
+                                        <NightsStayIcon
+                                            sx={{
+                                                transform: 'translateX(6px) translateY(-3px)'
+                                            }}
+                                        />
+                                    }
+                                />
+                            }
+                        />
+                    </FormGroup>
+                </div>
             </div>
         </div>
     )
