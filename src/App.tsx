@@ -23,7 +23,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Paper style={{ height: '100vh', borderRadius: '0', minHeight: '780px'}}>
+      <Paper style={{ height: '100%', borderRadius: '0'}}>
         <div className="App">
             <Header darkMode={darkMode === 'dark'} changeDarkMode={changeDarkMode} language={language} setLanguage={setLanguage}/>
             <div className='App-Wrapper'>
