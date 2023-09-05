@@ -12,17 +12,26 @@
         @media (max-width: 570px) {
             width: 100%;
         }
-        .Header-Wrapper-FormControl {
-            height: 100%;
+        .Header-Wrapper-Typography {
             display: flex;
             align-items: center;
-            width: 150px;
-            margin-right: 20px;
+            cursor: pointer;
         }
-        .Header-Wrapper-FormGroup {
-            height: 100%;
+        .Header-Wrapper-Block {
             display: flex;
-            align-items: center;
+            max-width: 70%;
+            .Header-Wrapper-Block-FormControl {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                width: 150px;
+                margin-right: 20px;
+            }
+            .Header-Wrapper-Block-FormGroup {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
         }
     }
 }

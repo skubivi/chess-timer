@@ -3,11 +3,12 @@ import './startingPage.scss'
 import { LanguageType } from '../../Hooks/useLanguage'
 import { Button } from '@mui/material'
 import { useState } from 'react'
-import ModalDialog, { TimeType } from './ModalDialog'
+import ModalDialog from './ModalDialog'
+import { TimeType } from '../../App'
 
 type StartingPageProps = {
     language: LanguageType,
-    setTime: (seconds: number, minutes: number) => void
+    setTime: (time: TimeType) => void
 }
 
 type ElementType = {
@@ -24,8 +25,16 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
         setShowModal(false)
         setSelectedTime(value)
         if (value) {
-            setTime(value.seconds, value.minutes)
+            setTime({seconds: value.seconds, minutes: value.minutes})
         }
+    }
+    const makeTime = (seconds: number, minutes: number): void => {
+        setTime(
+            {
+                seconds: seconds,
+                 minutes: minutes
+            }
+        )
     }
     const data: Array<Array<ElementType>> = [
         [
@@ -34,7 +43,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 0,
                 label: language === 'ru' ? 'Пуля' : 'Bullet',
                 onClick: (e) => {
-                    setTime(0, 1)
+                    makeTime(0, 1)
                 }
             },
             {
@@ -42,7 +51,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 1,
                 label: language === 'ru' ? 'Пуля' : 'Bullet',
                 onClick: (e) => {
-                    setTime(1, 2)
+                    makeTime(1, 2)
                 }
             },
             {
@@ -50,7 +59,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 0,
                 label: language === 'ru' ? 'Пуля' : 'Bullet',
                 onClick: (e) => {
-                    setTime(0, 3)
+                    makeTime(0, 3)
                 }
             },
         ],
@@ -60,7 +69,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 2,
                 label: language === 'ru' ? 'Блиц' : 'Blitz',
                 onClick: (e) => {
-                    setTime(2, 3)
+                    makeTime(2, 3)
                 }
             },
             {
@@ -68,7 +77,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 0,
                 label: language === 'ru' ? 'Блиц' : 'Blitz',
                 onClick: (e) => {
-                    setTime(0, 5)
+                    makeTime(0, 5)
                 }
             },
             {
@@ -76,7 +85,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 3,
                 label: language === 'ru' ? 'Блиц' : 'Blitz',
                 onClick: (e) => {
-                    setTime(3, 5)
+                    makeTime(3, 5)
                 }
             },
         ],
@@ -86,7 +95,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 0,
                 label: language === 'ru' ? 'Рапид' : 'Rapid',
                 onClick: (e) => {
-                    setTime(0, 10)
+                    makeTime(0, 10)
                 }
             },
             {
@@ -94,7 +103,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 5,
                 label: language === 'ru' ? 'Рапид' : 'Rapid',
                 onClick: (e) => {
-                    setTime(5, 10)
+                    makeTime(5, 10)
                 }
             },
             {
@@ -102,7 +111,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 10,
                 label: language === 'ru' ? 'Рапид' : 'Rapid',
                 onClick: (e) => {
-                    setTime(10, 15)
+                    makeTime(10, 15)
                 }
             },
         ],
@@ -112,7 +121,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 0,
                 label: language === 'ru' ? 'Классические' : 'Classical',
                 onClick: (e) => {
-                    setTime(0, 30)
+                    makeTime(0, 30)
                 }
             },
             {
@@ -120,7 +129,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                 seconds: 20,
                 label: language === 'ru' ? 'Классические' : 'Classical',
                 onClick: (e) => {
-                    setTime(20, 30)
+                    makeTime(20, 30)
                 }
             },
             {
@@ -153,7 +162,7 @@ const StartingPage: React.FC<StartingPageProps> = ({language, setTime}) => {
                     }
                     onClick={data[i][j].onClick}
                 >
-                    {data[i][j].minutes && <p className='StartingPage-Rows-Row-label'>{data[i][j].minutes + '+' + data[i][j].seconds}</p>}
+                    {data[i][j].minutes && <p className='StartingPage-Rows-Row-label'>{data[i][j].minutes + ' + ' + data[i][j].seconds}</p>}
                     <p className='StartingPage-Rows-Row-label'>{data[i][j].label}</p>
                 </Button>
             row.push(element)

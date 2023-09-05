@@ -16,5 +16,5 @@ export const useLanguage: UseLanguageType = () => {
         localLanguage ? setLanguage(localLanguage) : setMode('ru')
     }, [])
 
-    return [language, setLanguage]
+    return [language, setMode]
 }

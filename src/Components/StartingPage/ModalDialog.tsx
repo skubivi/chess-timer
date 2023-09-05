@@ -2,11 +2,8 @@ import * as React from 'react'
 import { Box, Button, Dialog, DialogTitle, List, ListItem, ListItemText, Slider } from '@mui/material'
 import { LanguageType } from '../../Hooks/useLanguage'
 import { useState } from 'react'
+import { TimeType } from '../../App'
 
-export type TimeType = {
-    seconds: number,
-    minutes: number
-}
 export type ModalDialogProps = {
     open: boolean
     selectedTime: TimeType | null
