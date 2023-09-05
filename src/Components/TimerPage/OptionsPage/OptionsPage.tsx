@@ -2,7 +2,7 @@ import * as React from 'react'
 import './optionsPage.scss'
 import { LanguageType } from '../../../Hooks/useLanguage'
 import { OptionsType, TimeMethod } from '../../../types'
-import { SelectChangeEvent, Switch, Typography } from '@mui/material'
+import { Button, SelectChangeEvent, Switch, Typography } from '@mui/material'
 import SelectComponent from '../../../Comon/SelectComponent'
 
 type OptionsPageProps = {
@@ -17,6 +17,7 @@ const OptionsPage: React.FC<OptionsPageProps> = ({language, options, setOptions,
     const methodLabel = language === 'ru' ? 'Временной метод' : 'Time method'
     const soundNotificationsLabel = language === 'ru' ? 'Звуковые оповещения' : 'Notifications sonores'
     const isUsingSpacebarLabel = language === 'ru' ? 'Использовать пробел для передачи хода' : 'Use spacebar for clock switches'
+    const buttonLabel = language === 'ru' ? "Начать!" : "Go!"
 
     const englishBronsteinMethodText = "Bronstein timing method: if a player moves faster than in n seconds, then his playing time does not change."
     const englishFischerMethodText = "Fischer timing method: n seconds are added after every move."
@@ -46,6 +47,9 @@ const OptionsPage: React.FC<OptionsPageProps> = ({language, options, setOptions,
 
     const handleIsUsingSpacebarChange = (): void => {
         setOptions(prev => ({...prev, isUsingSpacebar: !prev.isUsingSpacebar}))
+    }
+    const handleButtonClick = (e: React.MouseEvent): void => {
+        nextPage()
     }
 
     return (
@@ -86,6 +90,9 @@ const OptionsPage: React.FC<OptionsPageProps> = ({language, options, setOptions,
                     checked={options.isUsingSpacebar} 
                     onChange={handleIsUsingSpacebarChange}
                 />
+            </div>
+            <div className='OptionsPage-Button'>
+                <Button variant='outlined' fullWidth={true} onClick={handleButtonClick}>{buttonLabel}</Button>
             </div>
         </div>
     )

@@ -9,7 +9,8 @@
         "select-text select-text"
         "sound-label sound-switch" 
         "sound-text sound-text" 
-        "spacebar-label spacebar-switch";
+        "spacebar-label spacebar-switch"
+        "button button";
     grid-template-columns: 3fr 1fr;
     .OptionsPage-SelectMethod {
         grid-area: select-method;
@@ -40,5 +41,8 @@
         grid-area: spacebar-switch;
         display: flex;
         justify-content: flex-end;
+    }
+    .OptionsPage-Button {
+        grid-area: button;
     }
 }
