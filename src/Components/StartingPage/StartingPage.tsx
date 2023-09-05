@@ -3,8 +3,8 @@ import './startingPage.scss'
 import { LanguageType } from '../../Hooks/useLanguage'
 import { Button } from '@mui/material'
 import { useState } from 'react'
-import ModalDialog from './ModalDialog'
-import { TimeType } from '../../App'
+import ModalDialog from './ModalDialog/ModalDialog'
+import { TimeType } from '../../types'
 
 type StartingPageProps = {
     language: LanguageType,

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Box, Button, Dialog, DialogTitle, List, ListItem, ListItemText, Slider } from '@mui/material'
-import { LanguageType } from '../../Hooks/useLanguage'
+import { LanguageType } from '../../../Hooks/useLanguage'
 import { useState } from 'react'
-import { TimeType } from '../../App'
+import { TimeType } from '../../../types'
 
 export type ModalDialogProps = {
     open: boolean
@@ -28,9 +28,9 @@ const ModalDialog: React.FC<ModalDialogProps> = ({open, selectedTime, onClose, l
     const buttonLabel = language === 'ru' ? 'Начать игру' : 'Start game'
     return (
         <Dialog open={open} onClose={handleClose}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '300px', height: '450px'}}>
-                <DialogTitle sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', padding: '0'}}>{title}</DialogTitle>
-                <List sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '250px', padding: '0'}}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '300px', height: '450px', maxHeight: '95vh'}}>
+                <DialogTitle sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '22%', padding: '0'}}>{title}</DialogTitle>
+                <List sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '56%', padding: '0'}}>
                     <ListItem sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                         <ListItemText>{minutesLabel}</ListItemText>
                         <Slider 
@@ -58,7 +58,7 @@ const ModalDialog: React.FC<ModalDialogProps> = ({open, selectedTime, onClose, l
                         />
                     </ListItem>
                 </List>
-                <Button sx={{height: '100px', padding: '0'}} onClick={() => handleButtonClick(seconds, minutes)}>{buttonLabel}</Button>
+                <Button sx={{height: '22%', padding: '0'}} onClick={() => handleButtonClick(seconds, minutes)}>{buttonLabel}</Button>
             </Box>
         </Dialog>
     )

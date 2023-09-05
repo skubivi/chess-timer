@@ -4,6 +4,7 @@ import { FormGroup, FormControlLabel, Switch, FormControl, InputLabel, MenuItem,
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import { LanguageType } from '../../Hooks/useLanguage';
+import SelectComponent from '../../Comon/SelectComponent';
 
 type HeaderProps = {
     darkMode: boolean
@@ -26,18 +27,17 @@ const Header: React.FC<HeaderProps> = ({darkMode, changeDarkMode, language, setL
                 <Typography variant='h5' className='Header-Wrapper-Typography'><p onClick={e => clearTime()}>Chess Timer</p></Typography>
                 <div className='Header-Wrapper-Block'>
                     <div className="Header-Wrapper-Block-FormControl">
-                        <FormControl fullWidth={true}>
-                            <InputLabel id="select-language-label">{labelLanguage}</InputLabel>
-                            <Select
-                                labelId='select-language-label'
-                                value={language}
-                                label={labelLanguage}
-                                onChange={handleChange}
-                            >
-                                <MenuItem value='ru'>Русский</MenuItem>
-                                <MenuItem value='en'>English</MenuItem>
-                            </Select>
-                        </FormControl>
+                        <SelectComponent 
+                            label={labelLanguage} 
+                            onChange={handleChange} 
+                            values={
+                                [
+                                    ['ru', 'Русский'],
+                                    ['en', 'English']
+                                ]
+                            } 
+                            currentValue={language}
+                        />
                     </div>
                     <div className='Header-Wrapper-Block-FormGroup'>
                         <FormGroup>

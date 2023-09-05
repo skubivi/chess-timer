@@ -8,29 +8,35 @@ import { useDarkMode } from './Hooks/useDarkMode';
 import { useLanguage } from './Hooks/useLanguage';
 import { useState } from 'react';
 import TimerPage from './Components/TimerPage/TimerPage';
-
-export type TimeType = {
-  seconds: number
-  minutes: number
-}
+import { OptionsType, TimeType } from './types';
 
 const App: React.FC = () => {
-  const [darkMode, changeDarkMode] = useDarkMode()
   const [language, setLanguage] = useLanguage()
 
   const [time, setTime] = useState<TimeType | null>(null)
-
   const handleSetTime = (time: TimeType): void => {
     setTime(time)
   }
   const handleClearTime = (): void => {
     setTime(null)
   }
+
+  const [darkMode, changeDarkMode] = useDarkMode()
   let darkTheme: Theme = createTheme({
     palette: {
       mode: darkMode === 'dark' ? 'dark' : 'light'
     }
   })
+
+  const initialOptions: OptionsType = {
+    method: 'Fischer',
+    soundNotifications: true,
+    isUsingSpacebar: true
+  }
+  const [options, setOptions] = useState<OptionsType>(initialOptions)
+  const clearOptions = (): void => {
+    setOptions(initialOptions)
+  }
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -39,6 +45,7 @@ const App: React.FC = () => {
             <Header darkMode={darkMode === 'dark'} changeDarkMode={changeDarkMode} language={language} setLanguage={setLanguage} clearTime={handleClearTime}/>
             <div className='App-Wrapper'>
               {!time && <StartingPage language={language} setTime={handleSetTime}/>}
+              {time && <TimerPage time={time} language={language} options={options} setOptions={setOptions} clearOptions={clearOptions}/>}
             </div>
         </div>
       </Paper>

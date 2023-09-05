@@ -1,0 +1,44 @@
+.OptionsPage {
+    display: grid;
+    width: 90%;
+    height: 50%;
+    margin-top: 10%;
+    gap: 10px;
+    grid-template-areas: 
+        "select-method select-method" 
+        "select-text select-text"
+        "sound-label sound-switch" 
+        "sound-text sound-text" 
+        "spacebar-label spacebar-switch";
+    grid-template-columns: 3fr 1fr;
+    .OptionsPage-SelectMethod {
+        grid-area: select-method;
+        display: flex;
+        align-items: flex-end;
+    }
+    .OptionsPage-SelectText {
+        grid-area: select-text;
+    }
+    .OptionsPage-SoundLabel {
+        grid-area: sound-label;
+        display: flex;
+        align-items: flex-end;
+    }
+    .OptionsPage-SoundSwitch {
+        grid-area: sound-switch;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+    .OptionsPage-SoundText {
+        grid-area: sound-text;
+    }
+    .OptionsPage-SpacebarLabel {
+        grid-area: spacebar-label;
+    }
+    .OptionsPage-SpacebarSwitch {
+        grid-area: spacebar-switch;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
